@@ -1,4 +1,4 @@
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createMuiTheme } from "@material-ui/core/styles";
 
 const fontWeight = {
   regular: 400,
@@ -6,7 +6,7 @@ const fontWeight = {
 
 const theme = createMuiTheme({
   typography: {
-    fontFamily: ['Maven Pro', 'sans-serif'].join(','),
+    fontFamily: ["Maven Pro", "sans-serif"].join(","),
     body1: {
       fontSize: 14,
       fontWeight: fontWeight.regular,
@@ -16,19 +16,22 @@ const theme = createMuiTheme({
   },
   palette: {
     common: {
-      black: '#000000',
-      white: '#ffffff',
+      black: "#000000",
+      white: "#ffffff",
     },
     primary: {
-      main: 'rgb(244, 123, 50)',
-      dark: 'rgb(65, 65, 65)',
+      main: "rgb(244, 123, 50)",
+      dark: "rgb(65, 65, 65)",
     },
     text: {
-      primary: '#000000',
-      secondary: '#rgb(244, 123, 50)',
+      primary: "#000000",
+      secondary: "rgb(244, 123, 50)",
     },
     background: {
-      default: '#F5F6F7',
+      default: "#F5F6F7",
+    },
+    error: {
+      main: "#d32f2f",
     },
   },
   breakpoints: {
@@ -43,27 +46,34 @@ const theme = createMuiTheme({
   overrides: {
     MuiButton: {
       containedPrimary: {
-        color: '#ffffff',
-        textTransform: 'none',
-        borderRadius: '50px',        
-        boxShadow: '0px 3px 8px rgba(0, 0, 0, 0.1)',
+        color: "#ffffff",
+        textTransform: "none",
+        borderRadius: "50px",
+        boxShadow: "0px 3px 8px rgba(0, 0, 0, 0.1)",
       },
     },
     MuiIconButton: {
       root: {
-        borderRadius: '50px',
-        boxShadow: '0px 3px 8px rgba(0, 0, 0, 0.1)',
+        borderRadius: "50px",
+        boxShadow: "0px 3px 8px rgba(0, 0, 0, 0.1)",
       },
     },
-    MuiTextField: {root: {
-      padding: '0 16px',
-       '& > *': {
-        padding: '0 16px',
+    MuiTextField: {
+      root: {
+        padding: "0 16px",
+        "& > *": {
+          padding: "0 16px",
+        },
+      },
     },
-    }},
+    MuiFormHelperText: {
+      root: {
+        padding: 0,
+      },
+    },
     MuiTypography: {
       root: {
-        textTransform: 'capitalize',
+        textTransform: "capitalize",
       },
     },
   },
