@@ -79,6 +79,9 @@ const useStyles = makeStyles((theme) => ({
   error: {
     fontWeight: "bold",
     paddingLeft: "16px",
+    [theme.breakpoints.down("sm")]: {
+      paddingLeft: 0
+    }
   },
 }));
 
@@ -88,7 +91,7 @@ const SignIn = () => {
   const { signIn } = useAuth();
   const history = useHistory();
   const classes = useStyles();
-  
+
   const { handleSubmit, control } = useForm();
 
   const onSubmit = async (data) => {
