@@ -1,10 +1,10 @@
-import { createMuiTheme } from "@material-ui/core/styles";
+import { createTheme } from "@material-ui/core/styles"
 
 const fontWeight = {
   regular: 400,
-};
+}
 
-const theme = createMuiTheme({
+const theme = createTheme({
   typography: {
     fontFamily: ["Maven Pro", "sans-serif"].join(","),
     body1: {
@@ -27,7 +27,7 @@ const theme = createMuiTheme({
       main: "#ffffff",
     },
     text: {
-      primary: "#000000",  
+      primary: "#000000",
     },
     background: {
       default: "#F5F6F7",
@@ -47,16 +47,25 @@ const theme = createMuiTheme({
   },
   overrides: {
     MuiButton: {
-      containedPrimary: {
-        color: "#ffffff",
-        textTransform: "none",
-        borderRadius: "50px",
-        boxShadow: "0px 3px 8px rgba(0, 0, 0, 0.1)",
-      },
-    },
-    MuiIconButton: {
       root: {
         borderRadius: "50px",
+      },
+      textSizeSmall: {
+        padding: "6px 12px",
+      },
+    },
+    MuiButtonBase: {
+      root: {
+        borderRadius: "50px",
+        boxShadow: "0px 3px 8px rgba(0, 0, 0, 0.1)",
+        padding: "12px 14px",
+      },
+    },
+    MuiPaper: {
+      rounded: {
+        borderRadius: "15px",
+      },
+      elevation1: {
         boxShadow: "0px 3px 8px rgba(0, 0, 0, 0.1)",
       },
     },
@@ -73,12 +82,12 @@ const theme = createMuiTheme({
         padding: 0,
       },
     },
-    MuiTypography: {
+    MuiTableContainer: {
       root: {
-        textTransform: "capitalize",
+        width: "auto",
       },
     },
   },
-});
+})
 
-export default theme;
+export default theme
