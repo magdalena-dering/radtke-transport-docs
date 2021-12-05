@@ -1,20 +1,21 @@
 import { Button, CircularProgress, TextField } from "@material-ui/core"
 import React, { useState } from "react"
 import { makeStyles } from "@material-ui/core/styles"
-import { Controller, useForm } from "react-hook-form"
+import { Controller, SubmitHandler, useForm } from "react-hook-form"
 import { Link } from "react-router-dom"
 import { actionCodeSettings } from "../../../authLinks"
 import { auth } from "../../../firebase"
 import { styles } from "./styles"
+import { FormValues } from "../../../types.model"
 
 const useStyles = makeStyles(styles)
 const SendAuthLink: React.FC = () => {
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
-  const { handleSubmit, control } = useForm()
+  const { handleSubmit, control } = useForm<FormValues>()
   const classes = useStyles()
 
-  const onSubmit = async (data: any) => {
+  const onSubmit: SubmitHandler<FormValues> = async data => {
     const { email } = data
     try {
       setError("")

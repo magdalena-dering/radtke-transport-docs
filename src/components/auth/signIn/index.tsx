@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Controller, useForm } from "react-hook-form"
+import { Controller, SubmitHandler, useForm } from "react-hook-form"
 import { useHistory } from "react-router-dom"
 import { makeStyles } from "@material-ui/core/styles"
 import {
@@ -10,20 +10,21 @@ import {
   CircularProgress,
   Typography,
 } from "@material-ui/core"
-
 import { auth } from "../../../firebase"
 import { styles } from "./styles"
+import { FormValues } from "../../../types.model"
 
 const useStyles = makeStyles(styles)
+
 const SignIn: React.FC = () => {
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const history = useHistory()
   const classes = useStyles()
 
-  const { handleSubmit, control } = useForm()
+  const { handleSubmit, control } = useForm<FormValues>()
 
-  const onSubmit = async (data: any) => {
+  const onSubmit: SubmitHandler<FormValues> = async data => {
     const { email, password } = data
     try {
       setError("")

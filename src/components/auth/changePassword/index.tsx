@@ -11,8 +11,9 @@ import React, { useState } from "react"
 import { Link } from "react-router-dom"
 import { makeStyles } from "@material-ui/core/styles"
 import { auth } from "../../../firebase"
-import { Controller, useForm } from "react-hook-form"
+import { Controller, SubmitHandler, useForm } from "react-hook-form"
 import { styles } from "./styles"
+import { FormValues } from "../../../types.model"
 
 const useStyles = makeStyles(styles)
 export interface Props {
@@ -23,10 +24,11 @@ const ChangePassword: React.FC = () => {
   const [error, setError] = useState("")
   const [passwordMessage, setPasswordMessage] = useState("")
   const [loading, setLoading] = useState(false)
-
   const classes = useStyles()
-  const { handleSubmit, control } = useForm()
-  const onSubmit = async (data: any) => {
+
+  const { handleSubmit, control } = useForm<FormValues>()
+
+  const onSubmit: SubmitHandler<FormValues> = async data => {
     const { email } = data
 
     try {

@@ -1,4 +1,5 @@
 import * as React from "react"
+import { CreateProps, EditProps, ListProps, ShowProps } from "ra-ui-materialui"
 
 import {
   Datagrid,
@@ -20,15 +21,13 @@ import {
   FileInput,
 } from "react-admin"
 
-const PostFilter = (props: any) => {
-  return (
-    <Filter {...props}>
-      <TextInput label="Search" source="title" alwaysOn />
-    </Filter>
-  )
-}
+const PostFilter = (props: any) => (
+  <Filter {...props}>
+    <TextInput label="Search" source="title" alwaysOn />
+  </Filter>
+)
 
-export const FinanceList = (props: any) => (
+export const FinanceList = (props: ListProps) => (
   <List {...props} filters={<PostFilter />}>
     <Datagrid>
       <TextField source="title" />
@@ -40,7 +39,7 @@ export const FinanceList = (props: any) => (
   </List>
 )
 
-export const FinanceShow = (props: any) => (
+export const FinanceShow = (props: ShowProps) => (
   <Show {...props}>
     <SimpleShowLayout>
       <TextField source="id" />
@@ -51,7 +50,7 @@ export const FinanceShow = (props: any) => (
   </Show>
 )
 
-export const FinanceCreate = (props: any) => (
+export const FinanceCreate = (props: CreateProps) => (
   <Create {...props}>
     <SimpleForm>
       <TextInput source="title" />
@@ -63,7 +62,7 @@ export const FinanceCreate = (props: any) => (
   </Create>
 )
 
-export const FinanceEdit = (props: any) => (
+export const FinanceEdit = (props: EditProps) => (
   <Edit {...props}>
     <SimpleForm>
       <TextInput source="title" />

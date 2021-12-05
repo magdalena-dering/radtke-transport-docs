@@ -6,67 +6,13 @@ import {
 } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
 import { useState } from "react"
-import { Controller, useForm } from "react-hook-form"
+import { Controller, SubmitHandler, useForm } from "react-hook-form"
 import { useHistory } from "react-router-dom"
 import { auth } from "../../../firebase"
+import { FormValues } from "../../../types.model"
+import { styles } from "./styles"
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    position: "relative",
-    padding: "5vh",
-    height: "100vh",
-    maxWidth: "unset",
-    [theme.breakpoints.down("sm")]: {
-      "&::before": {
-        top: "200px",
-        backgroundSize: "50%",
-      },
-    },
-  },
-  typography: {
-    paddingBottom: "5rem",
-    [theme.breakpoints.down("sm")]: {
-      textAlign: "center",
-    },
-  },
-  form: {
-    [theme.breakpoints.down("sm")]: {
-      textAlign: "center",
-      display: "block",
-    },
-    // TODO: Check style for MuiFormControl
-    "& > div": {
-      [theme.breakpoints.down("sm")]: {
-        width: "100%",
-        padding: 0,
-      },
-    },
-  },
-  button: {
-    margin: "1rem 2rem",
-    width: "max-content",
-    [theme.breakpoints.down("sm")]: {
-      display: "block",
-      width: "100%",
-      margin: "2rem 0",
-    },
-  },
-  buttonProgress: {
-    color: theme.palette.common.white,
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    marginTop: -12,
-    marginLeft: -12,
-  },
-  error: {
-    fontWeight: "bold",
-    paddingLeft: "16px",
-    [theme.breakpoints.down("sm")]: {
-      paddingLeft: 0,
-    },
-  },
-}))
+const useStyles = makeStyles(styles)
 
 const SignUp = () => {
   const [error, setError] = useState("")
@@ -75,8 +21,9 @@ const SignUp = () => {
   const classes = useStyles()
   auth.isSignInWithEmailLink(window.location.href)
 
-  const { handleSubmit, control } = useForm()
-  const onSubmit = async (data: any) => {
+  const { handleSubmit, control } = useForm<FormValues>()
+
+  const onSubmit: SubmitHandler<FormValues> = async data => {
     const emailLocaleStorage = window.localStorage.getItem("emailForSignIn")
     const { email, password, confirmPassword } = data
 
